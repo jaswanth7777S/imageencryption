@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Image {{ action|capitalize }} Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Image {{ action|capitalize }} Result</h1>
+        <p>The image has been {{ action }} successfully.</p>
+        {% if action == 'encrypted' %}
+        <div class="download-links">
+            <p><a href="{{ image_url }}" download>Download Encrypted Image</a></p>
+            <p><a href="{{ key_url }}" download>Download Key</a></p>
+        </div>
+        {% else %}
+        <div class="download-links">
+            <p><a href="{{ image_url }}" download>Download Decrypted Image</a></p>
+        </div>
+        {% endif %}
+        <a href="/" class="btn">Go Back</a>
+    </div>
+</body>
+</html>
